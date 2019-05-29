@@ -1,0 +1,22 @@
+{
+  "name": "online-food-ordering-platform",
+  "version": "1.0.0",
+  "description": "A platform where you can order for food",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartpro1/online-food-ordering-platform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smartpro1/online-food-ordering-platform/issues"
+  },
+  "homepage": "https://github.com/smartpro1/online-food-ordering-platform#readme",
+  "dependencies": {
+    "jest": "^24.8.0"
+  }
+}
