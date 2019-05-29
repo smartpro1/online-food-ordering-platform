@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+   
+   	<label for="user">Username</label>
+   	<input type="text" id="username">
+     <br>
+   	<br>
+   	<label for="password">Password</label>
+
+   	<input type="password" id="password">
+   	
+    <button type='button' onclick="login()">Submit</button>
+   
+   <script type="text/javascript">
+     function login(){
+      const username =  document.getElementById("username").value;
+      const password =  document.getElementById("password").value;
+
+      if(username === 'admin001' && password === 'password123'){
+        alert("Successfull");
+        window.location.href = "file:///C:/Users/Promise/Desktop/project/online-food-ordering-platform/admin/index.html";
+        
+      } else {
+         alert("incorrect username/password combination");
+      }
+     }
+   </script>
+</body>
+</html>
