@@ -61,7 +61,7 @@
 <body>
    
    <h1 style="text-align: center">Admin Page</h1>
-   <form onsubmit="addFood()" id="foodForm" method="POST" action="http://localhost:3000/">
+   <form  id="foodForm">
    	<h3 style="color: white">Add Food</h3>
    	<div class="foodItems">
 	   	<label for="name">Image url</label>
@@ -79,7 +79,7 @@
 	    <label for="price">Price</label>
 	    <input type="text" id="price">
     </div>
-    <input type="submit" value="submit">
+    <input type="button" value="submit" id="btnSubmit">
    </form>
 
    <table style="width: 100%" id="foodDetailsTable">
@@ -96,6 +96,7 @@
    </table>
 
    <script type="text/javascript">
+
    	window.onload = getFoodDetails("http://localhost:3000/foods");
    	 function getFoodDetails(url){
       const xhttp = new XMLHttpRequest();
@@ -148,6 +149,33 @@
       xhttp.send();
    	 }
    	 
+  
+   	
+   		document.getElementById("btnSubmit").addEventListener("click", function(){
+   		let imageUrl = document.getElementById("image").value;
+   	     console.log('jjjj');
+   	 	let foodName = document.getElementById("name").value;
+   	 	let description = document.getElementById("description").value;
+   	 	let price = document.getElementById("price").value;
+   	 	
+   	 	var xhr = new XMLHttpRequest();
+   	 	var url = "http://localhost:3000/foods";
+   	 	xhr.open("POST", url, true);
+   	 	xhr.setRequestHeader("Content-type", "application/json");
+   	 	xhr.onreadystatechange = function(){
+   	 		if(xhr.readyState === 4 && xhr.status === 200){
+   	 			var json = JSON.parse(xhr.responseText);
+   	 		}
+   	 	}
+   	 	var data = JSON.stringify({"name": foodName, "image": imageUrl, "description": description, "price": price});
+   	 	xhr.send(data);
+   		});
+   	 	
+
+   	 	
+   	 	
+   	 
+
    </script>
 </body>
 </html>
