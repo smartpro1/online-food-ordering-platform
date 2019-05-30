@@ -43,6 +43,19 @@
         input[type="submit"]:hover{
         	opacity: 0.7;
         }
+        table{
+        	margin: 80px 0;
+        }
+        table, th, td{
+        	border: 1px solid black;
+        	text-align: center;
+        	border-collapse: collapse;
+        	padding: 5px;
+        }
+        table caption{
+          font-size: 25px;
+          margin: 20px 0;
+        }
     </style>	
 </head>
 <body>
@@ -69,14 +82,72 @@
     <input type="submit" value="submit">
    </form>
 
-   <table style="width: 100%">
+   <table style="width: 100%" id="foodDetailsTable">
+   	<caption>Created Foods</caption>
    	  <tr>
    	  	<th>id</th>
-   	  	<th>name</th>
+   	  	<th>name of food</th>
    	  	<th>description</th>
-   	  	<th>price</th>
+   	  	<th>price(#)</th>
    	  	<th>actions</th>
    	  </tr>
+
+   	  
    </table>
+
+   <script type="text/javascript">
+   	window.onload = getFoodDetails("http://localhost:3000/foods");
+   	 function getFoodDetails(url){
+      const xhttp = new XMLHttpRequest();
+      let details;
+      xhttp.open('GET', url, true);
+      xhttp.responseType = 'json';
+      xhttp.onload = function(){
+      	if(xhttp.status === 200){
+          details = xhttp.response;
+          
+     for(var i = 0; i < details.length; i++){
+
+     
+     var tr = document.createElement('tr');
+   	 var td1 = document.createElement('td');
+   	 td1.textContent = details[i].id;
+   	 tr.appendChild(td1);
+
+   	 var td2 = document.createElement('td');
+   	 td2.textContent = details[i].name;
+   	 tr.appendChild(td2);
+
+   	 var td3 = document.createElement('td');
+   	 td3.textContent = details[i].description;
+   	 tr.appendChild(td3);
+
+   	 var td4 = document.createElement('td');
+   	 td4.textContent = details[i].price;
+   	 tr.appendChild(td4);
+
+   	 var edit = document.createElement("button");
+   	 edit.setAttribute('type', 'button');
+   	 edit.textContent = "Edit";
+   	 edit.style.color = 'blue';
+   	 tr.appendChild(edit);
+     
+     var del = document.createElement("button");
+   	 edit.setAttribute('type', 'button');
+   	 del.textContent = "Delete";
+   	 del.style.color = 'red';
+   	 tr.appendChild(del);
+
+     document.getElementById("foodDetailsTable").appendChild(tr);
+    }
+
+      	}else{
+      		console.log(xhttp.response);
+      	}
+      }
+      xhttp.send();
+   	 }
+   	 
+   </script>
 </body>
 </html>

@@ -111,8 +111,8 @@
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
     xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
+      //var status = xhr.status;
+      if (xhr.status === 200) {
        const data = xhr.response;
        for(var i = 0; i< data.length; i++){
        var element =  document.createElement('div');
@@ -140,7 +140,7 @@
          var anchor = document.createElement('a');
          anchor.setAttribute('href', '#');
          anchor.setAttribute('class', 'btn btn-primary');
-         anchor.innerHTML = 'Add to Cart';
+         anchor.innerHTML = 'Order';
          element.appendChild(anchor);
          // document.querySelector(".card-body").appendChild(element);
          document.getElementById("item").appendChild(element);
