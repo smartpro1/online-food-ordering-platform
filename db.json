@@ -1,27 +1,32 @@
 {
-	"foods":[
-      {
-      	"id": 1,
-      	"name" : "jollof rice",
-      	"image": "images/jollof.jpg",
-      	"description": "Jollof rice, chicken and dodo.",
-      	"price": 2500
-      },
-
-      {
-      	"id": 2,
-      	"name" : "fried rice",
-      	"image": "images/fried.jpg",
-      	"description": "fried rice with chicken.",
-      	"price": 2500
-      },
-
-      {
-      	"id": 3,
-      	"name" : "poundo yam",
-      	"image": "images/poundo.jpg",
-      	"description": "Pounded Yam with correct soup!.",
-      	"price": 2500
-      }
-	]
+  "foods": [
+    {
+      "id": 1,
+      "name": "jollof rice",
+      "image": "images/jollof.jpg",
+      "description": "Jollof rice, chicken and dodo.",
+      "price": 3000
+    },
+    {
+      "id": 2,
+      "name": "fried rice",
+      "image": "images/fried.jpg",
+      "description": "fried rice with chicken.",
+      "price": 2500
+    },
+    {
+      "id": 3,
+      "name": "poundo yam",
+      "image": "images/poundo.jpg",
+      "description": "Pounded Yam with correct soup!.",
+      "price": 3500
+    },
+    {
+      "name": "Rice",
+      "image": "fackboo.com.png",
+      "description": "Rice and stew",
+      "price": "300",
+      "id": 4
+    }
+  ]
 }
