@@ -29,6 +29,22 @@
       "id": 4
     }
   ],
-  "orders":[
+  "orders": [
+    {
+      "id": 1,
+      "fullname": "Grace Usibor",
+      "number": "08023267688",
+      "address": "Ikorodu",
+      "price": "1500",
+      "food": "Jollof Rice"
+    },
+    {
+      "fullname": "Akeni Promise",
+      "number": "07062931318",
+      "food": "Fried Rice",
+      "price": "1500",
+      "address": "27, Iyase street",
+      "id": 2
+    }
   ]
 }

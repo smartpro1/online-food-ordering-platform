@@ -95,6 +95,21 @@
    	  
    </table>
 
+   <table style="width: 100%" id="foodOrdersTable">
+   	<caption>Ordered Foods</caption>
+   	  <tr>
+   	  	<th>id</th>
+   	  	<th>Fullname</th>
+   	  	<th>Name of food</th>
+   	  	<th>Phone Number</th>
+   	  	<th>Address</th>
+   	  	<th>Price(#)</th>
+   	  	
+   	  </tr>
+
+   	  
+   </table>
+
    <script type="text/javascript">
 
    	window.onload = getFoodDetails("http://localhost:3000/foods");
@@ -149,11 +164,60 @@
       xhttp.send();
    	 }
    	 
+
+
+
+   	 window.onload = getFoodOrders("http://localhost:3000/orders");
+   	 function getFoodOrders(url){
+      const xhttp = new XMLHttpRequest();
+      let orders;
+      xhttp.open('GET', url, true);
+      xhttp.responseType = 'json';
+      xhttp.onload = function(){
+      	if(xhttp.status === 200){
+          orders = xhttp.response;
+          
+     for(var i = 0; i < orders.length; i++){
+
+     
+     var tr = document.createElement('tr');
+    
+   	 var td1 = document.createElement('td');
+   	 td1.textContent = orders[i].id;
+   	 tr.appendChild(td1);
+     
+      var td0 = document.createElement('td');
+   	 td0.textContent = orders[i].fullname;
+   	 tr.appendChild(td0);
+
+   	 var td2 = document.createElement('td');
+   	 td2.textContent = orders[i].food;
+   	 tr.appendChild(td2);
+
+   	 var td3 = document.createElement('td');
+   	 td3.textContent = orders[i].number;
+   	 tr.appendChild(td3);
+
+   	 var td4 = document.createElement('td');
+   	 td4.textContent = orders[i].address;
+   	 tr.appendChild(td4);
+
+   	 var td5 = document.createElement('td');
+   	 td5.textContent = orders[i].price;
+   	 tr.appendChild(td5);
+     document.getElementById("foodOrdersTable").appendChild(tr);
+    }
+
+      	}else{
+      		console.log(xhttp.response);
+      	}
+      }
+      xhttp.send();
+   	 }
   
    	
    		document.getElementById("btnSubmit").addEventListener("click", function(){
    		let imageUrl = document.getElementById("image").value;
-   	     console.log('jjjj');
    	 	let foodName = document.getElementById("name").value;
    	 	let description = document.getElementById("description").value;
    	 	let price = document.getElementById("price").value;
