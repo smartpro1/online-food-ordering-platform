@@ -2,9 +2,29 @@
 <html>
 <head>
 	<title>Login</title>
+  <style type="text/css">
+    form{
+      width: 500px;
+      margin: 100px auto;
+      background: #00FA9A;
+      text-align: center;
+      padding: 10px;
+    }
+    input{
+      border-radius: 2px;
+      width: 150px;
+    }
+   #btnLogin{
+    margin-left: 180px;
+    margin-top: 30px;
+   }
+    
+
+  </style>
 </head>
 <body>
-   
+   <form>
+    <p>Welcome Admin </p>
    	<label for="user">Username</label>
    	<input type="text" id="username">
      <br>
@@ -12,9 +32,9 @@
    	<label for="password">Password</label>
 
    	<input type="password" id="password">
-   	
-    <button type='button' onclick="login()">Submit</button>
-   
+   	<br>
+    <button type='button' onclick="login()" id="btnLogin">Submit</button>
+   </form>
    <script type="text/javascript">
      function login(){
       const username =  document.getElementById("username").value;
@@ -22,10 +42,14 @@
 
       if(username === 'admin001' && password === 'password123'){
         alert("Successfull");
-        window.location.href = "file:///C:/Users/Promise/Desktop/project/online-food-ordering-platform/admin/index.html";
+        var path = window.location.pathname;
+        var loc = path.substring(0, path.lastIndexOf('/'));
+        
+
+         window.location.href = loc + "/index.html";
         
       } else {
-         alert("incorrect username/password combination");
+         alert("incorrect username/password combination", path);
       }
      }
    </script>

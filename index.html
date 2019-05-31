@@ -117,6 +117,7 @@
        for(var i = 0; i< data.length; i++){
        var element =  document.createElement('div');
        element.setAttribute('class', 'card col-md-4');
+       element.style.margin= '40px 0';
        element.style.width = '18rem';
        var img = document.createElement('img');
        img.setAttribute('src', data[i].image);
@@ -137,12 +138,19 @@
        var paragraph2 = document.createElement('p');
         paragraph2.innerHTML = data[i].price;
          cardBody.appendChild(paragraph2);
+         // var btn = document.createElement('button');
+         // btn.setAttribute('class', 'btn btn-primary btnOrder');
+         // btn.setAttribute('type', 'button');
+         // btn.innerHTML = 'Order';
+         
+         // element.appendChild(btn);
          var anchor = document.createElement('a');
-         anchor.setAttribute('href', '#');
-         anchor.setAttribute('class', 'btn btn-primary');
+         anchor.setAttribute('href', './admin/index.html');
+         anchor.setAttribute('class', 'btn btn-primary btnOrder');
+         
          anchor.innerHTML = 'Order';
          element.appendChild(anchor);
-         // document.querySelector(".card-body").appendChild(element);
+         //cardBody.appendChild(element);
          document.getElementById("item").appendChild(element);
        }
        //console.log(data[0].price);
@@ -162,18 +170,11 @@
 // </div>
 };
 
- // window.onload = getSomtin("localhost/3000/foods");
- //        function getSomtin(url){
- //        const xhttp = new XMLHttpRequest();
- //        xhttp.onreadystatechange = function (){
- //            if(this.readyState === 4 && this.status === 200){
- //                const data = this.request;
- //                console.log(data);
- //            }
- //        }
- //        xhttp.open('GET', url, true);
- //        xhttp.send();
- //    }
+ // var btnOrders = document.querySelectorAll('.btnOrder');
+ // btnOrders.forEach(button => button.addEventListener('click', function(){
+ //  console.log(button);
+ // }));
+
 
   </script>
 </body>
