@@ -49,7 +49,9 @@
          window.location.href = loc + "/index.html";
         
       } else {
-         alert("incorrect username/password combination", path);
+         alert("incorrect username/password combination");
+          document.getElementById("username").value = "";
+          document.getElementById("password").value = "";
       }
      }
    </script>
