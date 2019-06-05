@@ -27,6 +27,20 @@
       "description": "Rice and stew",
       "price": "300",
       "id": 4
+    },
+    {
+      "name": "Yam and Egg",
+      "image": "",
+      "description": "Yam with Egg sauce",
+      "price": "#5000",
+      "id": 5
+    },
+    {
+      "name": "Yam and Egg",
+      "image": "",
+      "description": "Yam with Egg sauce",
+      "price": "#5000",
+      "id": 6
     }
   ],
   "orders": [
@@ -36,15 +50,35 @@
       "number": "08023267688",
       "address": "Ikorodu",
       "price": "1500",
-      "food": "Jollof Rice"
+      "food": "Jollof Rice",
+      "quantity": 1
     },
     {
       "fullname": "Akeni Promise",
       "number": "07062931318",
       "food": "Fried Rice",
-      "price": "1500",
+      "price": "3000",
       "address": "27, Iyase street",
+      "quantity": 2,
       "id": 2
+    },
+    {
+      "fullname": "Akeni Promise Oberoro",
+      "number": "08066477879",
+      "quantity": "2",
+      "food": "fried rice",
+      "price": "5000",
+      "address": "27, Phillip Onashile Street, Kosofe, Mile 12, Lagos.",
+      "id": 3
+    },
+    {
+      "fullname": "Faith Ajofotan",
+      "number": "08099456786",
+      "quantity": "1",
+      "food": "poundo yam",
+      "price": "3500",
+      "address": "Warri",
+      "id": 4
     }
   ]
 }

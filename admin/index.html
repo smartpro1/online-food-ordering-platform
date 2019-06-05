@@ -99,16 +99,19 @@
    	<caption>Ordered Foods</caption>
    	  <tr>
    	  	<th>id</th>
-   	  	<th>Fullname</th>
-   	  	<th>Name of food</th>
-   	  	<th>Phone Number</th>
-   	  	<th>Address</th>
-   	  	<th>Price(#)</th>
+   	  	<th>fullname</th>
+   	  	<th>name of food</th>
+   	  	<th>phone</th>
+   	  	<th>address</th>
+        <th>quantity</th>
+   	  	<th>total price(#)</th>
    	  	
    	  </tr>
 
    	  
    </table>
+
+   
 
    <script type="text/javascript">
 
@@ -201,10 +204,14 @@
    	 var td4 = document.createElement('td');
    	 td4.textContent = orders[i].address;
    	 tr.appendChild(td4);
+     
+     var td5 = document.createElement('td');
+     td5.textContent = orders[i].quantity;
+     tr.appendChild(td5);
 
-   	 var td5 = document.createElement('td');
-   	 td5.textContent = orders[i].price;
-   	 tr.appendChild(td5);
+   	 var td6 = document.createElement('td');
+   	 td6.textContent = orders[i].price;
+   	 tr.appendChild(td6);
      document.getElementById("foodOrdersTable").appendChild(tr);
     }
 

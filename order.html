@@ -119,12 +119,14 @@
    	 	}
    	 	var data = JSON.stringify({"fullname": fullname, "number": number, "food": foodname, "price": price, "address": address});
    	 	xhr.send(data);
-
+      
+      alert('order placed');
       document.getElementById("name").value = "";
       document.getElementById("foodItems").value = "";
       document.getElementById("number").value = "";
       document.getElementById("address").value = "";
       document.getElementById("price").value = "";
+
    		 });
    	 	
      
