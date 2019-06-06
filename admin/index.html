@@ -3,6 +3,67 @@
 <head>
 	<title>Admin</title>
     <style type="text/css">
+      #editForm{
+    background: #1e90ff;
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    display: none;
+    box-sizing: border-box;
+  }
+
+  #editForm #cancel{
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #editForm h3{
+    color: white;
+    font-weight: bold;
+  }
+
+  #editForm label{
+    color: black;
+    float: left;
+    color: white;
+    margin-left: 15px;
+  }
+
+  #editForm input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 5px 0 10px;
+    font-weight: bold;
+    border: none;
+
+  }
+  #editForm button{
+    margin-top: 15px;
+    padding: 10px;
+    width: 100px;
+    font-weight: bold;
+    margin-left: 150px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+  }
+
+  #editForm button:hover{
+    background: #4169E1;
+    color: white;
+  }
     	form{
     		width: 600px;
     		background: #00FA9A;
@@ -52,6 +113,7 @@
         	border-collapse: collapse;
         	padding: 5px;
         }
+
         table caption{
           font-size: 25px;
           margin: 20px 0;
@@ -59,6 +121,28 @@
     </style>	
 </head>
 <body>
+
+    <form id="editForm">
+    <span id="cancel" onclick="closePage()">x</span>
+    <h3>Edit Item</h3>
+    <label for="id">id</label>
+    <input type="text" id="id">
+
+    <label for="image">image url</label>
+    <input type="text" id="image">
+
+    <label for="food">food</label>
+    <input type="text" id="food">
+
+    <label for="description">description</label>
+    <input type="text" id="description">
+
+    <label for="id">price</label>
+    <input type="text" id="price">
+    
+    <button>Submit</button>
+    
+  </form>
    
    <h1 style="text-align: center">Admin Page</h1>
    <form  id="foodForm">
@@ -144,27 +228,56 @@
    	 var td4 = document.createElement('td');
    	 td4.textContent = details[i].price;
    	 tr.appendChild(td4);
-
+    
+     var td5 = document.createElement('td');
    	 var edit = document.createElement("button");
    	 edit.setAttribute('type', 'button');
+     edit.setAttribute('class', 'btnsEdit');
    	 edit.textContent = "Edit";
    	 edit.style.color = 'blue';
-   	 tr.appendChild(edit);
+     edit.style.marginRight = '10px';
+     td5.appendChild(edit);
      
      var del = document.createElement("button");
-   	 edit.setAttribute('type', 'button');
+   	 del.setAttribute('type', 'button');
+     del.setAttribute('class', 'btnsDelete');
    	 del.textContent = "Delete";
    	 del.style.color = 'red';
-   	 tr.appendChild(del);
+   	 td5.appendChild(del);
+     tr.appendChild(td5);
 
      document.getElementById("foodDetailsTable").appendChild(tr);
+
     }
+       document.querySelectorAll('.btnsEdit').forEach(btnEdit => btnEdit.addEventListener('click', function(){
+          document.getElementById('editForm').style.display = 'block';
+          let idForm = document.getElementById('id');
+          let foodForm = document.getElementById('food');
+          let descForm = document.getElementById('description');
+          let priceForm = document.getElementById('price');
+          let id = btnEdit.parentNode.parentNode.childNodes[0].textContent;
+          let food = btnEdit.parentNode.parentNode.childNodes[1].textContent;
+          let description = btnEdit.parentNode.parentNode.childNodes[2].textContent;
+          let price = btnEdit.parentNode.parentNode.childNodes[3].textContent;
+          idForm.value = id;
+          foodForm.value = food;
+          descForm.value = description;
+          priceForm.value = price;
+
+
+          
+          
+       }));
+      
 
       	}else{
       		console.log(xhttp.response);
       	}
       }
       xhttp.send();
+
+
+
    	 }
    	 
 
@@ -213,6 +326,7 @@
    	 td6.textContent = orders[i].price;
    	 tr.appendChild(td6);
      document.getElementById("foodOrdersTable").appendChild(tr);
+
     }
 
       	}else{
@@ -220,6 +334,8 @@
       	}
       }
       xhttp.send();
+
+
    	 }
   
    	
@@ -244,8 +360,10 @@
    	 	
 
    	 	
-   	 	
-   	 
+   	 	function closePage(){
+        document.getElementById('editForm').style.display = 'none';
+      }
+  
 
    </script>
 </body>
