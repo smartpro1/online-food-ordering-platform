@@ -58,6 +58,7 @@
     box-sizing: border-box;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   #editForm button:hover{
@@ -126,7 +127,7 @@
     <span id="cancel" onclick="closePage()">x</span>
     <h3>Edit Item</h3>
     <label for="id">id</label>
-    <input type="text" id="id">
+    <input type="text" id="id" disabled>
 
     <label for="image">image url</label>
     <input type="text" id="image">
@@ -140,7 +141,7 @@
     <label for="id">price</label>
     <input type="text" id="price">
     
-    <button>Submit</button>
+    <button id="editBtnSubmit" type="button" onclick="update()">Update</button>
     
   </form>
    
@@ -170,6 +171,7 @@
    	<caption>Created Foods</caption>
    	  <tr>
    	  	<th>id</th>
+        <th>image url</th>
    	  	<th>name of food</th>
    	  	<th>description</th>
    	  	<th>price(#)</th>
@@ -198,7 +200,7 @@
    
 
    <script type="text/javascript">
-
+   let idEdit, idDel;
    	window.onload = getFoodDetails("http://localhost:3000/foods");
    	 function getFoodDetails(url){
       const xhttp = new XMLHttpRequest();
@@ -216,6 +218,10 @@
    	 var td1 = document.createElement('td');
    	 td1.textContent = details[i].id;
    	 tr.appendChild(td1);
+
+     var tdimg = document.createElement('td');
+     tdimg.textContent = details[i].image;
+     tr.appendChild(tdimg);
 
    	 var td2 = document.createElement('td');
    	 td2.textContent = details[i].name;
@@ -255,11 +261,14 @@
           let foodForm = document.getElementById('food');
           let descForm = document.getElementById('description');
           let priceForm = document.getElementById('price');
-          let id = btnEdit.parentNode.parentNode.childNodes[0].textContent;
-          let food = btnEdit.parentNode.parentNode.childNodes[1].textContent;
-          let description = btnEdit.parentNode.parentNode.childNodes[2].textContent;
-          let price = btnEdit.parentNode.parentNode.childNodes[3].textContent;
-          idForm.value = id;
+          let imgForm = document.getElementById('image');
+           idEdit = btnEdit.parentNode.parentNode.childNodes[0].textContent;
+          let img = btnEdit.parentNode.parentNode.childNodes[1].textContent;
+          let food = btnEdit.parentNode.parentNode.childNodes[2].textContent;
+          let description = btnEdit.parentNode.parentNode.childNodes[3].textContent;
+          let price = btnEdit.parentNode.parentNode.childNodes[4].textContent;
+          idForm.value = idEdit;
+          imgForm.value = img;
           foodForm.value = food;
           descForm.value = description;
           priceForm.value = price;
@@ -268,6 +277,26 @@
           
           
        }));
+
+       document.querySelectorAll('.btnsDelete').forEach(btnDelete => btnDelete.addEventListener('click', function(){
+         idDel = btnDelete.parentNode.parentNode.childNodes[0].textContent;
+         let url = "http://localhost:3000/foods/" + idDel;
+      let xhr = new XMLHttpRequest();
+      xhr.open("DELETE", url, true);
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.onreadystatechange = function(){
+       if(xhr.readyState === 4 && xhr.status === 200){
+         var json = JSON.parse(xhr.responseText);
+        
+       }
+      }
+      
+      xhr.send();
+      setTimeout(function(){
+        location.reload();
+      }, 1000);
+      alert('successfully deleted');
+     }));
       
 
       	}else{
@@ -281,7 +310,7 @@
    	 }
    	 
 
-
+     
 
    	 window.onload = getFoodOrders("http://localhost:3000/orders");
    	 function getFoodOrders(url){
@@ -337,7 +366,18 @@
 
 
    	 }
-  
+      
+      // let xhr = new XMLHttpRequest();
+      // function postRequest(){
+      // let url = "http://localhost:3000/foods";
+      // xhr.open("POST", url, true);
+      // xhr.setRequestHeader("Content-type", "application/json");
+      // xhr.onreadystatechange = function(){
+      //   if(xhr.readyState === 4 && xhr.status === 200){
+      //     var json = JSON.parse(xhr.responseText);
+      //   }
+      // }
+      // }
    	
    		document.getElementById("btnSubmit").addEventListener("click", function(){
    		let imageUrl = document.getElementById("image").value;
@@ -345,8 +385,8 @@
    	 	let description = document.getElementById("description").value;
    	 	let price = document.getElementById("price").value;
    	 	
-   	 	var xhr = new XMLHttpRequest();
-   	 	var url = "http://localhost:3000/foods";
+   	 	let xhr = new XMLHttpRequest();
+   	 	let url = "http://localhost:3000/foods";
    	 	xhr.open("POST", url, true);
    	 	xhr.setRequestHeader("Content-type", "application/json");
    	 	xhr.onreadystatechange = function(){
@@ -354,6 +394,7 @@
    	 			var json = JSON.parse(xhr.responseText);
    	 		}
    	 	}
+      
    	 	var data = JSON.stringify({"name": foodName, "image": imageUrl, "description": description, "price": price});
    	 	xhr.send(data);
    		});
@@ -364,7 +405,37 @@
         document.getElementById('editForm').style.display = 'none';
       }
   
+      function update(){
 
+      let xhr = new XMLHttpRequest();
+      let id, image, food, description, price;
+        // id = document.getElementById('id').value;
+        image = document.getElementById('image').value;
+        food = document.getElementById('food').value;
+        description = document.getElementById('description').value;
+        price = document.getElementById('price').value;
+
+      let url = "http://localhost:3000/foods/" + idEdit;
+
+      xhr.open("PUT", url, true);
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.onreadystatechange = function(){
+       if(xhr.readyState === 4 && xhr.status === 200){
+         var json = JSON.parse(xhr.responseText);
+       }
+      }
+      var updateData = JSON.stringify({"image":image, "name": food, "description": description, "price": price });
+      xhr.send(updateData);
+      document.getElementById('editForm').style.display = 'none';
+      setTimeout(function(){
+        location.reload();
+      }, 1000);
+      alert('successfully updated');
+      }
+
+
+      
    </script>
 </body>
 </html>
+

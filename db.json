@@ -1,11 +1,11 @@
 {
   "foods": [
     {
-      "id": 1,
-      "name": "jollof rice",
       "image": "images/jollof.jpg",
+      "name": "jollof rice",
       "description": "Jollof rice, chicken and dodo.",
-      "price": 3000
+      "price": "2000",
+      "id": 1
     },
     {
       "id": 2,
@@ -15,11 +15,11 @@
       "price": 2500
     },
     {
-      "id": 3,
-      "name": "poundo yam",
       "image": "images/poundo.jpg",
-      "description": "Pounded Yam with correct soup!.",
-      "price": 3500
+      "name": "pounded yam",
+      "description": "Pounded Yam with white soup.",
+      "price": "3500",
+      "id": 3
     },
     {
       "name": "Rice",
@@ -27,20 +27,6 @@
       "description": "Rice and stew",
       "price": "300",
       "id": 4
-    },
-    {
-      "name": "Yam and Egg",
-      "image": "",
-      "description": "Yam with Egg sauce",
-      "price": "#5000",
-      "id": 5
-    },
-    {
-      "name": "Yam and Egg",
-      "image": "",
-      "description": "Yam with Egg sauce",
-      "price": "#5000",
-      "id": 6
     }
   ],
   "orders": [
@@ -88,6 +74,24 @@
       "price": "14000",
       "address": "Igando",
       "id": 5
+    },
+    {
+      "fullname": "Samuel Omoleke",
+      "number": "08099767440",
+      "quantity": "4",
+      "food": "jollof rice",
+      "price": "12000",
+      "address": "Iyana something",
+      "id": 6
+    },
+    {
+      "fullname": "Mc Baloo",
+      "number": "0809987744",
+      "quantity": "6",
+      "food": "jollof rice",
+      "price": "18000",
+      "address": "Jumofak",
+      "id": 7
     }
   ]
 }
