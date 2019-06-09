@@ -15,11 +15,11 @@
       "price": 2500
     },
     {
-      "id": 3,
-      "name": "poundo yam",
       "image": "images/poundo.jpg",
-      "description": "Pounded Yam with correct soup!.",
-      "price": 3500
+      "name": "pounded yam",
+      "description": "Pounded Yam with white soup.",
+      "price": "3500",
+      "id": 3
     },
     {
       "name": "Rice",
@@ -29,15 +29,15 @@
       "id": 4
     },
     {
+      "image": "fake image",
       "name": "Yam and Egg",
-      "image": "",
       "description": "Yam with Egg sauce",
       "price": "#5000",
       "id": 5
     },
     {
+      "image": "no  image",
       "name": "Yam and Egg",
-      "image": "",
       "description": "Yam with Egg sauce",
       "price": "#5000",
       "id": 6
@@ -88,6 +88,15 @@
       "price": "14000",
       "address": "Igando",
       "id": 5
+    },
+    {
+      "fullname": "Samuel Omoleke",
+      "number": "08099767440",
+      "quantity": "4",
+      "food": "jollof rice",
+      "price": "12000",
+      "address": "Iyana something",
+      "id": 6
     }
   ]
 }
