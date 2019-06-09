@@ -200,7 +200,7 @@
    
 
    <script type="text/javascript">
-   let idEdit;
+   let idEdit, idDel;
    	window.onload = getFoodDetails("http://localhost:3000/foods");
    	 function getFoodDetails(url){
       const xhttp = new XMLHttpRequest();
@@ -277,6 +277,26 @@
           
           
        }));
+
+       document.querySelectorAll('.btnsDelete').forEach(btnDelete => btnDelete.addEventListener('click', function(){
+         idDel = btnDelete.parentNode.parentNode.childNodes[0].textContent;
+         let url = "http://localhost:3000/foods/" + idDel;
+      let xhr = new XMLHttpRequest();
+      xhr.open("DELETE", url, true);
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.onreadystatechange = function(){
+       if(xhr.readyState === 4 && xhr.status === 200){
+         var json = JSON.parse(xhr.responseText);
+        
+       }
+      }
+      
+      xhr.send();
+      setTimeout(function(){
+        location.reload();
+      }, 1000);
+      alert('successfully deleted');
+     }));
       
 
       	}else{
@@ -290,7 +310,7 @@
    	 }
    	 
 
-     document.querySelectorAll('.btnsDelete').forEach(btnEdit => btnEdit.addEventListener('click', function(){}))
+     
 
    	 window.onload = getFoodOrders("http://localhost:3000/orders");
    	 function getFoodOrders(url){
@@ -386,9 +406,6 @@
       }
   
       function update(){
-        
-      // console.log({id, image, food, description, price});
-
 
       let xhr = new XMLHttpRequest();
       let id, image, food, description, price;

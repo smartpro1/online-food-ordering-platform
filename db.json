@@ -1,11 +1,11 @@
 {
   "foods": [
     {
-      "id": 1,
-      "name": "jollof rice",
       "image": "images/jollof.jpg",
+      "name": "jollof rice",
       "description": "Jollof rice, chicken and dodo.",
-      "price": 3000
+      "price": "2000",
+      "id": 1
     },
     {
       "id": 2,
@@ -27,20 +27,6 @@
       "description": "Rice and stew",
       "price": "300",
       "id": 4
-    },
-    {
-      "image": "fake image",
-      "name": "Yam and Egg",
-      "description": "Yam with Egg sauce",
-      "price": "#5000",
-      "id": 5
-    },
-    {
-      "image": "no  image",
-      "name": "Yam and Egg",
-      "description": "Yam with Egg sauce",
-      "price": "#5000",
-      "id": 6
     }
   ],
   "orders": [
@@ -97,6 +83,15 @@
       "price": "12000",
       "address": "Iyana something",
       "id": 6
+    },
+    {
+      "fullname": "Mc Baloo",
+      "number": "0809987744",
+      "quantity": "6",
+      "food": "jollof rice",
+      "price": "18000",
+      "address": "Jumofak",
+      "id": 7
     }
   ]
 }
